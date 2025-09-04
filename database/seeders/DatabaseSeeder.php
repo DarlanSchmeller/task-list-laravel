@@ -19,12 +19,12 @@ class DatabaseSeeder extends Seeder
         DB::table('tasks')->truncate();
 
         User::factory(10)->create();
+        User::factory(2)->unverified()->create();
+        Task::factory(10)->create();
 
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
-
-        Task::factory(10)->create();
     }
 }
