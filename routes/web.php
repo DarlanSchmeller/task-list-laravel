@@ -19,11 +19,21 @@ Route::get('/tasks/create', function () {
 })->name('tasks.create');
 
 Route::post('/tasks/', function (Request $request) {
-    dd('We have reached the store route', $request->all());
+    $validatedData = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string|max:255',
+        'long_description' => 'required|string|max:525'
+    ]);
+
+    $taskId = Task::create($validatedData)->id;
+
+    return redirect()->route('tasks.show', [
+        'id' => $taskId
+    ]);
 })->name('tasks.store');
 
 Route::get('/tasks/{id}', function ($id) {
     return view('show', [
-      'task' => Task::findOrFail($id)
+        'task' => Task::findOrFail($id)
     ]);
 })->name('tasks.show');

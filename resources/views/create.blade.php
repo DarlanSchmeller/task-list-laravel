@@ -15,7 +15,8 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700" for="title">Title</label>
-                <input text="text" name="title" id="title" class="w-full px-4 py-2 border rounded focus:outline-none" />
+                <input text="text" name="title" id="title"
+                    class="w-full px-4 py-2 border rounded focus:outline-none" />
             </div>
 
             <div class="mb-4">
@@ -25,7 +26,8 @@
 
             <div class="mb-4">
                 <label class="block text-gray-700" for="long_description">Long Description</label>
-                <textarea name="long_description" id="long_description" class="w-full px-4 py-2 border rounded focus:outline-none" rows="3"></textarea>
+                <textarea name="long_description" id="long_description" class="w-full px-4 py-2 border rounded focus:outline-none"
+                    rows="3"></textarea>
             </div>
 
             <button type="submit"
@@ -34,4 +36,4 @@
             </button>
         </form>
     </div>
-    @endsection
+@endsection
