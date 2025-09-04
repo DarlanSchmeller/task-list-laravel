@@ -11,6 +11,11 @@
 
 <body class="bg-gray-100">
     <main class="container mx-auto p-4 mt-4">
+        @if(session()->has('success'))
+            <div class="p-4 mb-4 text-sm text-white rounded bg-green-500">
+                <p>{{ session('success') }}</p>
+            </div>
+        @endif
         <h1>@yield('title')</h1>
         <div>@yield('content')</div>
     </main>

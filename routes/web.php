@@ -9,13 +9,13 @@ Route::get('/', function () {
 });
 
 Route::get('/tasks', function () {
-    return view('index', [
+    return view('tasks.index', [
         'tasks' => Task::latest()->get()
     ]);
 })->name('tasks.index');
 
 Route::get('/tasks/create', function () {
-    return view('create');
+    return view('tasks.create');
 })->name('tasks.create');
 
 Route::post('/tasks/', function (Request $request) {
@@ -29,11 +29,11 @@ Route::post('/tasks/', function (Request $request) {
 
     return redirect()->route('tasks.show', [
         'id' => $taskId
-    ]);
+    ])->with('success', 'Task created successfully!');
 })->name('tasks.store');
 
 Route::get('/tasks/{id}', function ($id) {
-    return view('show', [
+    return view('tasks.show', [
         'task' => Task::findOrFail($id)
     ]);
 })->name('tasks.show');

@@ -13,21 +13,31 @@
                 Task Info
             </h2>
 
+
             <div class="mb-4">
-                <label class="block text-gray-700" for="title">Title</label>
+                <label class="block text-gray-700" for="title">Title*</label>
                 <input text="text" name="title" id="title"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" />
+                    class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="Task title"/>
+                @error('title')
+                    <p class="text-red-600 mt-1 text-sm">{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="mb-4">
-                <label class="block text-gray-700" for="description">Description</label>
-                <textarea name="description" id="description" class="w-full px-4 py-2 border rounded focus:outline-none" rows="1"></textarea>
+                <label class="block text-gray-700" for="description">Description*</label>
+                <textarea name="description" id="description" class="w-full px-4 py-2 border rounded focus:outline-none" rows="1" placeholder="Task description"></textarea>
+                @error('description')
+                    <p class="text-red-600 mt-1 text-sm">{{ $message }}</p>
+                @enderror
             </div>
 
             <div class="mb-4">
-                <label class="block text-gray-700" for="long_description">Long Description</label>
+                <label class="block text-gray-700" for="long_description">Long Description*</label>
                 <textarea name="long_description" id="long_description" class="w-full px-4 py-2 border rounded focus:outline-none"
-                    rows="3"></textarea>
+                    rows="3" placeholder="Task detailed description"></textarea>
+                @error('long_description')
+                    <p class="text-red-600 mt-1 text-sm">{{ $message }}</p>
+                @enderror
             </div>
 
             <button type="submit"
