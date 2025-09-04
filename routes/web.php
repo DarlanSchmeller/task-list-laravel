@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Requests\TaskRequest;
 use Illuminate\Support\Facades\Route;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -18,44 +19,32 @@ Route::get('/tasks/create', function () {
     return view('tasks.create');
 })->name('tasks.create');
 
-Route::post('/tasks/', function (Request $request) {
-    $validatedData = $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'required|string|max:255',
-        'long_description' => 'required|string|max:525'
-    ]);
+Route::post('/tasks/', function (TaskRequest $request) {
+    $validatedData = $request->validated();
 
     $taskId = Task::create($validatedData)->id;
 
     return redirect()->route('tasks.show', [
-        'id' => $taskId
+        'task' => $taskId
     ])->with('success', 'Task created successfully!');
 })->name('tasks.store');
 
-Route::get('/tasks/{id}', function ($id) {
+Route::get('/tasks/{task}', function (Task $task) {
     return view('tasks.show', [
-        'task' => Task::findOrFail($id)
+        'task' => $task
     ]);
 })->name('tasks.show');
 
-Route::get('/tasks/{id}/edit', function ($id) {
+Route::get('/tasks/{task}/edit', function (Task $task) {
     return view('tasks.edit', [
-        'task' => Task::findOrFail($id)
+        'task' => $task
     ]);
 })->name('tasks.edit');
 
-Route::put('/tasks/{id}', function ($id, Request $request) {
-    $validatedData = $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'required|string|max:255',
-        'long_description' => 'required|string|max:525'
-    ]);
+Route::put('/tasks/{task}', function (TaskRequest $request, Task $task) {
+    $validatedData =  $request->validated();
 
-    $task = Task::findOrFail($id);
     $task->update($validatedData);
 
-
-    return redirect()->route('tasks.show', [
-        'id' => $id
-    ])->with('success', 'Task updated successfully!');
+    return redirect()->route('tasks.show', ['task' =>$task->id])->with('success', 'Task updated successfully!');
 })->name('tasks.update');

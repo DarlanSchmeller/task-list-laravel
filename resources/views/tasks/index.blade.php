@@ -7,7 +7,7 @@
         @forelse ($tasks as $index => $task)
             <div class="rounded-lg shadow-md bg-white p-4">
                 <div class="flex items-center space-between gap-4">
-                    <a href="{{ route('tasks.show', ['id' => $task->id]) }}" class="text-blue-700">
+                    <a href="{{ route('tasks.show', ['task' => $task->id]) }}" class="text-blue-700">
                         {{ $task->title }}
                     </a>
                 </div>
