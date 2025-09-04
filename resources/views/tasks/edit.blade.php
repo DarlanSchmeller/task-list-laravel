@@ -17,7 +17,7 @@
         <div class="mb-4">
             <label class="block text-gray-700" for="title">Title*</label>
             <input text="text" name="title" id="title" class="w-full px-4 py-2 border rounded focus:outline-none"
-                value="{{ $task->title }}" placeholder="Task title" />
+            value="{{ old('title') ?? $task->title }}" placeholder="Task title" />
             @error('title')
             <p class="text-red-600 mt-1 text-sm">{{ $message }}</p>
             @enderror
@@ -26,7 +26,7 @@
         <div class="mb-4">
             <label class="block text-gray-700" for="description">Description*</label>
             <textarea name="description" id="description" class="w-full px-4 py-2 border rounded focus:outline-none"
-                rows="1" placeholder="Task description">{{ $task->description }}</textarea>
+                rows="1" placeholder="Task description">{{ old('description') ?? $task->description }}</textarea>
             @error('description')
             <p class="text-red-600 mt-1 text-sm">{{ $message }}</p>
             @enderror
@@ -37,7 +37,7 @@
             <textarea name="long_description" id="long_description"
                 class="w-full px-4 py-2 border rounded focus:outline-none" rows="3"
                 value="{{ $task->long_description }}"
-                placeholder="Task detailed description">{{ $task->description }}</textarea>
+                placeholder="Task detailed description">{{ old('long_description') ?? $task->long_description }}</textarea>
             @error('long_description')
             <p class="text-red-600 mt-1 text-sm">{{ $message }}</p>
             @enderror
