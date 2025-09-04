@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title')</title>
+    <title>Tasklee | Task Management Made Easy</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gray-100">
     <main class="container mx-auto p-4 mt-4">
         @if(session()->has('success'))
-            <div class="p-4 mb-4 text-sm text-white rounded bg-green-500">
-                <p>{{ session('success') }}</p>
-            </div>
+        <div class="p-4 mb-4 text-sm text-white rounded bg-green-500">
+            <p>{{ session('success') }}</p>
+        </div>
         @endif
         <h1>@yield('title')</h1>
         <div>@yield('content')</div>

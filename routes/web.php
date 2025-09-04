@@ -37,3 +37,25 @@ Route::get('/tasks/{id}', function ($id) {
         'task' => Task::findOrFail($id)
     ]);
 })->name('tasks.show');
+
+Route::get('/tasks/{id}/edit', function ($id) {
+    return view('tasks.edit', [
+        'task' => Task::findOrFail($id)
+    ]);
+})->name('tasks.edit');
+
+Route::put('/tasks/{id}', function ($id, Request $request) {
+    $validatedData = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string|max:255',
+        'long_description' => 'required|string|max:525'
+    ]);
+
+    $task = Task::findOrFail($id);
+    $task->update($validatedData);
+
+
+    return redirect()->route('tasks.show', [
+        'id' => $id
+    ])->with('success', 'Task updated successfully!');
+})->name('tasks.update');
