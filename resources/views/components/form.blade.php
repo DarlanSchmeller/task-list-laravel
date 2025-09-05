@@ -21,13 +21,13 @@
     <x-inputs.text name="assignee" id="assignee" placeholder="Insert an assignee for your task" label="Assignee"
         :data="$task" />
 
-    <x-inputs.select id="priority" name="priority" label="Priority" value="{{ old('priority') }}" :options="[
+    <x-inputs.select id="priority" name="priority" label="Priority" value="{{ old('priority', $task->priority ?? '') }}" :options="[
             'low' => 'low',
             'medium' => 'medium',
             'high' => 'high',
         ]" />
 
-    <x-inputs.select id="status" name="status" label="Status" value="{{ old('status') }}" :options="[
+    <x-inputs.select id="status" name="status" label="Status" value="{{ old('status', $task->status ?? '') }}" :options="[
             'to do' => 'to do',
             'in progress' => 'in progress',
             'completed' => 'completed',
