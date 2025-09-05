@@ -3,6 +3,7 @@
 @section('title', $task->title)
 
 @section('content')
+<p><strong>Status:</strong> {{ $task->completed ? 'Completed' : 'In Progress' }}</p>
 <p>{{ $task->description }}</p>
 
 @if ($task->long_description)
@@ -13,6 +14,14 @@
 <p>{{ $task->updated_at }}</p>
 
 <div class="flex flex-row gap-4 my-4">
+    <form method="POST" action="{{ route('tasks.toggle-complete', $task->id) }}">
+        @csrf
+        @method("PUT")
+        <button type="submit" class="bg-green-500 hover:bg-green-600 text-sm text-white p-2 rounded-md">
+            Toggle Task
+        </button>
+    </form>
+
     <a href="{{ route('tasks.edit', ['task' => $task->id]) }}"
         class="bg-blue-500 hover:bg-blue-600 text-sm text-white p-2 rounded-md">
         Edit Task
