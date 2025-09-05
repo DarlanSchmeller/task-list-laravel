@@ -20,4 +20,10 @@
     <button class="bg-blue-500 hover:bg-blue-600 text-sm text-white p-2 rounded-md">
         <a href="{{ route('tasks.create') }}">Create New Task</a>
     </button>
+
+    @if ($tasks->count())
+        <nav class="pt-4">
+            {{ $tasks->links() }}
+        </nav>
+    @endif
 @endsection
