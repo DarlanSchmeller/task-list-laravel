@@ -19,8 +19,10 @@ class TaskFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
-            'long_description' => fake()->paragraph(7, true),
-            'completed' => fake()->boolean()
+            'detailed_description' => fake()->paragraph(7, true),
+            'assignee' => fake()->name(),
+            'priority' => fake()->randomElement(['low', 'medium', 'high']),
+            'status' => fake()->randomElement(['to do', 'in progress', 'completed']),
         ];
     }
 }

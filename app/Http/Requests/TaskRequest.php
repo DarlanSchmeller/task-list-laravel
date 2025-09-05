@@ -24,7 +24,10 @@ class TaskRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'long_description' => 'required|string|max:525'
+            'detailed_description' => 'required|string|max:525',
+            'assignee' => 'required|string|max:255',
+            'priority' => 'required|in:low,medium,high',
+            'status' => 'required|in:to do,in progress,completed',
         ];
     }
 }

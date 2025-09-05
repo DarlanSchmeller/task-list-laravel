@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->text('long_description')->nullable();
-            $table->boolean('completed')->default(false);
+            $table->text('detailed_description')->nullable();
+            $table->text('assignee');
+            $table->enum('priority', ['low', 'medium', 'high']);
+            $table->enum('status', ['to do', 'in Progress', 'completed']);
             
             $table->timestamps();
         });

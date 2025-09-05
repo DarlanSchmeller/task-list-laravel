@@ -15,6 +15,12 @@ Route::get('/tasks', function () {
     ]);
 })->name('tasks.index');
 
+Route::get('/tasks/completed', function () {
+    return view('tasks.index', [
+        'tasks' => Task::latest()->where('status', 'completed')->paginate(6)
+    ]);
+})->name('tasks.completed');
+
 Route::get('/tasks/create', function () {
     return view('tasks.create');
 })->name('tasks.create');
@@ -57,7 +63,7 @@ Route::delete('tasks/{task}', function (Task $task) {
 
 
 Route::put('/tasks/{task}/toggle-complete', function (Task $task) {
-    $task->toggleComplete();
+    $task->updateStatus();
 
     return redirect()->route('tasks.show', $task->id)->with('success', 'Task status changed successfully!');
-})->name('tasks.toggle-complete');
+})->name('tasks.update-status');
