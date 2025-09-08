@@ -33,6 +33,22 @@
             'completed' => 'completed',
         ]" />
 
+    <x-inputs.select id="type" name="type" label="Type" value="{{ old('type', $task->type ?? '') }}" :options="[
+        'software' => 'software',
+        'cooking' => 'cooking',
+        'home' => 'home',
+        'shopping' => 'shopping',
+        'exercise' => 'exercise',
+        'study' => 'study',
+        'meeting' => 'meeting',
+        'finance' => 'finance',
+        'travel' => 'travel',
+        'health' => 'health',
+        'gardening' => 'gardening',
+        'cleaning' => 'cleaning',
+        'entertainment' => 'entertainment'
+    ]" />
+
 
     <button type="submit"
         class="w-full bg-indigo-500 hover:bg-indigo-600 text-white p-3 my-3 rounded focus:outline-none font-bold">

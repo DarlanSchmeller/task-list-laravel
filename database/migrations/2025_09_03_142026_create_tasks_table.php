@@ -18,8 +18,23 @@ return new class extends Migration
             $table->text('detailed_description')->nullable();
             $table->text('assignee');
             $table->enum('priority', ['low', 'medium', 'high']);
-            $table->enum('status', ['to do', 'in Progress', 'completed']);
-            
+            $table->enum('status', ['to do', 'in progress', 'completed']);
+            $table->enum('type', [
+                'software', 
+                'cooking', 
+                'home', 
+                'shopping', 
+                'exercise', 
+                'study', 
+                'meeting', 
+                'finance', 
+                'travel', 
+                'health', 
+                'gardening', 
+                'cleaning', 
+                'entertainment'
+            ])->default('home');
+
             $table->timestamps();
         });
     }

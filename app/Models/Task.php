@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class Task extends Model
 {
@@ -22,7 +23,8 @@ class Task extends Model
         'detailed_description',
         'assignee',
         'priority',
-        'status'
+        'status',
+        'type'
     ];
 
     public function updateStatus(): void
@@ -33,5 +35,10 @@ class Task extends Model
             $this->status = self::STATUS[$current];
             $this->save();
         }
-    } 
+    }
+    
+    public function checklistItems(): Relation
+    {
+        return $this->hasMany(ChecklistItem::class);
+    }
 }

@@ -23,6 +23,10 @@ class TaskFactory extends Factory
             'assignee' => fake()->name(),
             'priority' => fake()->randomElement(['low', 'medium', 'high']),
             'status' => fake()->randomElement(['to do', 'in progress', 'completed']),
+            'type' => fake()->randomElement([
+                'software','cooking','home','shopping','exercise','study','meeting',
+                'finance','travel','health','gardening','cleaning','entertainment'
+            ]),
         ];
     }
 }

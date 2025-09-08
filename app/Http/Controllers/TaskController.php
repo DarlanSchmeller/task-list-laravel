@@ -56,7 +56,10 @@ class TaskController extends Controller
      */
     public function show(Task $task): View
     {
-        return view('tasks.show', ['task' => $task]);
+        // Get checklist items
+        $checklist = $task->checklistItems;
+
+        return view('tasks.show', ['task' => $task, 'checklist' => $checklist]);
     }
 
     /**

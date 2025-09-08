@@ -28,6 +28,7 @@ class TaskRequest extends FormRequest
             'assignee' => 'required|string|max:255',
             'priority' => 'required|in:low,medium,high',
             'status' => 'required|in:to do,in progress,completed',
+            'type' => 'required|in:software, cooking,home,shopping,exercise,study,meeting,finance,travel,health,gardening,cleaning,entertainment',
         ];
     }
 }

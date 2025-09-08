@@ -1,29 +1,10 @@
 @props(['task' => ''])
 
-@php
-    $priorityColors = [
-        'low' => 'bg-blue-500',
-        'medium' => 'bg-orange-500',
-        'high' => 'bg-red-500'
-    ];
-
-    $statusColors = [
-        'to do' => 'bg-gray-500',
-        'in progress' => 'bg-cyan-500',
-        'completed' => 'bg-green-500'
-    ];
-
-    $taskNextStatus = [
-        'to do' => 'in progress',
-        'in progress' => 'completed',
-        'completed' => 'to do',
-    ];
-@endphp
-
 <div class="rounded-xl shadow-lg bg-white overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
     <div class="p-5 flex-1">
-        <div class="flex items-center mb-4">
-            <i class="fa fa-clipboard-check text-lg text-white bg-indigo-600 p-3 rounded-lg shadow-md mr-3"></i>
+        <div class="flex items-center mb-4 text-xl">
+            <i class="flex-shrink-0 fa {{ config('task.icons')[strtolower($task->type)] }} text-white bg-indigo-600 rounded-lg shadow-md mr-3 
+                w-11 h-11 flex items-center justify-center"></i>
             <h2 class="text-lg font-bold text-gray-800">
                 {{ $task->title }}
             </h2>
@@ -33,15 +14,15 @@
             <p><strong>Description:</strong> {{ $task->description }}</p>
             <p>
                 <strong>Status:</strong>
-                <span class="text-xs font-semibold {{ $statusColors[strtolower($task->status)] }} text-white rounded-full px-3 py-1 ml-1">{{ ucfirst($task->status) }}</span>
+                <span class="text-xs font-semibold {{ config('task.statusColors')[strtolower($task->status)] }} text-white rounded-full px-3 py-1 ml-1">{{ ucfirst($task->status) }}</span>
             </p>
             <p><strong>Assignee:</strong> {{ $task->assignee }}</p>
             <p><strong>Priority:</strong> 
-                <span class="text-xs font-semibold {{ $priorityColors[$task->priority] }} text-white rounded-full px-3 py-1 ml-1">
+                <span class="text-xs font-semibold {{ config('task.priorityColors')[strtolower($task->priority)] }} text-white rounded-full px-3 py-1 ml-1">
                     {{ ucfirst($task->priority) }}
                 </span>
             </p>
-            <p><strong>Created at:</strong> {{ $task->created_at }} 
+            <p><strong>Created at:</strong> {{ $task->created_at->format('M d, Y H:i') }}</p>
         </div>
     </div>
 
@@ -54,7 +35,7 @@
             @csrf
             @method("PUT")
             <button type="submit" class="px-4 py-2 rounded-lg text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                Mark as {{ $taskNextStatus[strtolower($task->status)] }}
+                Mark as {{ config('task.nextStatus')[strtolower($task->status)] }}
             </button>
         </form>
     </div>
