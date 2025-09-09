@@ -39,10 +39,15 @@
                 <ul class="space-y-2">
                     @foreach($checklist as $item)
                     <li class="flex items-center space-x-3 bg-gray-50 rounded-xl p-3 shadow-sm">
-                        <input type="checkbox" class="h-5 w-5 text-green-600 rounded focus:ring-green-500" {{
-                            $item->completed ? 'checked' : '' }}
-                        disabled
-                        >
+
+                        <form method="post" action="{{ route('tasks.checklist.toggle', [$task, $item]) }}">
+                            @csrf
+                            @method("PUT")
+                            <input onchange="this.form.submit()" type="checkbox" class="h-5 w-5 text-green-600 rounded focus:ring-green-500" {{
+                                $item->completed ? 'checked' : '' }}
+                            >
+                        </form>
+
                         <span class="{{ $item->completed ? 'line-through text-gray-400' : '' }}">
                             {{ $item->description }}
                         </span>

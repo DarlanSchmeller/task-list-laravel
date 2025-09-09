@@ -8,6 +8,6 @@
         Edit Task
     </h2>
 
-    <x-form method="PUT" route="tasks.update" :task="$task" />
+    <x-form method="PUT" route="tasks.update" :task="$task" :checklists="$checklistItems" />
 </div>
 @endsection

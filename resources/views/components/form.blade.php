@@ -1,4 +1,4 @@
-@props(['route', 'task' => [], 'method' => ''])
+@props(['route', 'task' => [], 'checklists' => [], 'method' => ''])
 
 <form method="POST" action="{{ $task ? route($route, $task) : route($route) }}" enctype="multipart/form-data">
     @csrf
@@ -50,14 +50,16 @@
     ]" />
 
     <div class="mb-4">
-        <label for="checklists" class="block text-sm font-bold text-gray-700 pt-4">Checklist</label>
+        <label class="block text-sm font-bold text-gray-700 pt-4">Checklist</label>
+
         @for($i = 0; $i < 3; $i++)
             <input type="text" name="checklists[]" 
                 placeholder="Checklist item {{ $i + 1 }}" 
                 class="w-full p-2 border rounded my-2"
-                value="{{ old('checklists.' . $i, $task->checklists[$i] ?? '') }}">
+                value="{{ old('checklists.' . $i, $checklists[$i] ?? '') }}">
         @endfor
     </div>
+
 
     <button type="submit"
         class="w-full bg-indigo-500 hover:bg-indigo-600 text-white p-3 my-3 rounded focus:outline-none font-bold">

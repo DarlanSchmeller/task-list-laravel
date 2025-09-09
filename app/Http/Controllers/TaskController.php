@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TaskRequest;
+use App\Models\ChecklistItem;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Task;
@@ -74,11 +75,35 @@ class TaskController extends Controller
     }
 
     /**
+     * Update checkmark
+     */
+    public function toggleChecklist(Task $task, ChecklistItem $item): RedirectResponse
+    {
+        // Make sure the item belongs to the task
+        if ($item->task_id !== $task->id) {
+            abort(403);
+        }
+
+        // Toggle completed
+        $item->completed = !$item->completed;
+        $item->save();
+
+        return back();
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Task $task): View
     {
-        return view('tasks.edit', ['task' => $task]);
+        // Get checklist data
+        $checklistItems = $task->checklistItems->pluck('description')->toArray();
+        $checklistItems = !empty($checklistItems) ? $checklistItems : null;
+        
+        return view('tasks.edit', [
+            'task' => $task,
+            'checklistItems' => $checklistItems
+        ]);
     }
 
     /**
@@ -86,9 +111,22 @@ class TaskController extends Controller
      */
     public function update(TaskRequest $request, Task $task)
     {
-        $validatedData =  $request->validated();
+        $validatedData = $request->validated();
+
+        $checklists = $validatedData['checklists'] ?? [];
+        unset($validatedData['checklists']);
 
         $task->update($validatedData);
+        $task->checklistItems()->delete();
+
+        foreach ($checklists as $item) {
+            if (is_string($item)) {
+                $task->checklistItems()->create([
+                    'description' => $item,
+                    'completed' => false,
+                ]);
+            }
+        }
 
         return redirect()->route('tasks.show', ['task' =>$task->id])->with('success', 'Task updated successfully!');
     }
@@ -111,6 +149,6 @@ class TaskController extends Controller
     {
         $task->updateStatus();
 
-        return redirect()->route('tasks.show', $task->id)->with('success', 'Task status changed successfully!');
+        return redirect()->back()->with('success', 'Task status changed successfully!');
     }
 }
