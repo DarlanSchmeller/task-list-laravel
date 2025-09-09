@@ -44,11 +44,22 @@ class TaskController extends Controller
     public function store(TaskRequest $request): RedirectResponse
     {
         $validatedData = $request->validated();
-        $taskId = Task::create($validatedData)->id;
 
-        return redirect()->route('tasks.show', [
-            'task' => $taskId
-        ])->with('success', 'Task created successfully!');
+        $checklists = $validatedData['checklists'] ?? [];
+        unset($validatedData['checklists']);
+
+        $task = Task::create($validatedData);
+
+        foreach ($checklists as $item) {
+            if (is_string($item)) {
+                $task->checklistItems()->create([
+                    'description' => $item,
+                    'completed' => false,
+                ]);
+            }
+        }
+
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully!');
     }
 
     /**

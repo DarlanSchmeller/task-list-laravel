@@ -29,6 +29,9 @@ class TaskRequest extends FormRequest
             'priority' => 'required|in:low,medium,high',
             'status' => 'required|in:to do,in progress,completed',
             'type' => 'required|in:software, cooking,home,shopping,exercise,study,meeting,finance,travel,health,gardening,cleaning,entertainment',
+
+            'checklists' => 'nullable|array',
+            'checklists.*' => 'nullable|string|max:255',
         ];
     }
 }

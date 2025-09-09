@@ -10,6 +10,13 @@ class ChecklistItem extends Model
 {
     protected $table = 'checklist_items';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'description',
+        'completed',
+    ];
+
     // SRelation with task
     protected function task() {
         return $this->belongsTo(Task::class);
