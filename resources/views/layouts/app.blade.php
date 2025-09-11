@@ -15,8 +15,18 @@
     <x-header />
     <main class="container mx-auto p-4 mt-4">
         @if(session()->has('success'))
-        <div class="p-4 mb-4 text-sm text-white rounded bg-green-500">
-            <p>{{ session('success') }}</p>
+        <div x-data="{ flash: true }" x-init="setTimeout(() => flash = false, 20000)">
+            <div x-show="flash" class="relative p-4 mb-4 text-sm text-white rounded bg-green-500" role="alert">
+                <p>{{ session('success') }}</p>
+                
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" @click="flash = false"
+                    stroke="currentColor" class="h-6 w-6 cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                </span>
+            </div>
         </div>
         @endif
         <div>
