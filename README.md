@@ -13,7 +13,7 @@ This is a task management application built with Laravel for study purposes.
 
 1. Clone the repository:
    ```
-   git clone https://github.com/DarlanSchmeller/task-list-laravel.git
+   git clone https://github.com/DarlanSchmeller/tasklee-laravel
    cd task-management
    ```
 
