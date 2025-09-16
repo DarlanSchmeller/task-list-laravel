@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Fix login issue",
+        "description": "Users are unable to reset their passwords through the forgot password flow.",
+        "detailed_description": "Investigate why the password reset emails are not being sent. Check mail configuration, logs, and recent changes in the authentication system. Ensure tokens are generated correctly.",
+        "assignee": "Alice Johnson",
+        "priority": "high",
+        "status": "to do",
+        "type": "software"
+    },
+    {
+        "title": "Prepare monthly budget report",
+        "description": "Compile all expenses and income for the previous month.",
+        "detailed_description": "Gather invoices, receipts, and bank statements. Summarize them in a spreadsheet, highlight overspending areas, and prepare recommendations for next month.",
+        "assignee": "Bob Smith",
+        "priority": "medium",
+        "status": "in progress",
+        "type": "finance"
+    },
+    {
+        "title": "Garden maintenance",
+        "description": "Trim hedges and mow the lawn in the backyard.",
+        "detailed_description": "Cut overgrown hedges, remove dead branches, mow the lawn evenly, fertilize soil, and remove weeds.",
+        "assignee": "Clara Davis",
+        "priority": "low",
+        "status": "completed",
+        "type": "gardening"
+    },
+    {
+        "title": "Plan team meeting",
+        "description": "Organize weekly stand-up meeting agenda.",
+        "detailed_description": "Check availability, book room, prepare discussion points, send calendar invites, and confirm attendance.",
+        "assignee": "Eva Martinez",
+        "priority": "medium",
+        "status": "in progress",
+        "type": "meeting"
+    },
+    {
+        "title": "Prepare dinner menu",
+        "description": "Plan a healthy dinner menu for the week.",
+        "detailed_description": "Select recipes for each day, create a shopping list, ensure nutritional balance, and consider dietary restrictions.",
+        "assignee": "Frank Wilson",
+        "priority": "low",
+        "status": "to do",
+        "type": "cooking"
+    },
+    {
+        "title": "Clean kitchen",
+        "description": "Deep clean all kitchen surfaces and appliances.",
+        "detailed_description": "Scrub countertops, clean sink and faucet, wipe cabinets, clean microwave and oven, mop floor, and organize pantry.",
+        "assignee": "Grace Brown",
+        "priority": "medium",
+        "status": "completed",
+        "type": "cleaning"
+    },
+    {
+        "title": "Study for software exam",
+        "description": "Prepare for the upcoming programming certification.",
+        "detailed_description": "Review course materials, practice coding exercises, complete past exam questions, and revise important concepts.",
+        "assignee": "Henry Adams",
+        "priority": "high",
+        "status": "in progress",
+        "type": "study"
+    },
+    {
+        "title": "Go for a run",
+        "description": "Morning exercise routine in the park.",
+        "detailed_description": "Warm-up for 5 minutes, run 3 kilometers at moderate pace, cool down, and stretch muscles after running.",
+        "assignee": "Ivy Thompson",
+        "priority": "medium",
+        "status": "to do",
+        "type": "exercise"
+    },
+    {
+        "title": "Update homepage banner",
+        "description": "Replace old marketing banner with the new summer campaign image.",
+        "detailed_description": "Design new banner according to brand guidelines. Ensure responsive display on mobile and desktop. Test and deploy properly.",
+        "assignee": "David Lee",
+        "priority": "high",
+        "status": "to do",
+        "type": "software"
+    },
+    {
+        "title": "Book flight tickets",
+        "description": "Arrange travel for the upcoming business trip.",
+        "detailed_description": "Check flight options, compare prices, confirm dates with team, book tickets, and send confirmations.",
+        "assignee": "Jack Carter",
+        "priority": "high",
+        "status": "to do",
+        "type": "travel"
+    }
+]
