@@ -1,6 +1,15 @@
-# Task Management Application
+# 📋 Tasklee - Task Management Made Easy
 
-This is a task management application built with Laravel for study purposes.
+Tasklee is a task management application built with **Laravel**, **Blade**, and **Alpine.js** to practice and showcase modern web development workflows.
+
+It comes with a **full CRUD** for tasks, along with features like:
+
+- ✅ Checklists to break tasks into smaller steps  
+- 🎨 Dynamic icons that adapt based on task type  
+- 🗂️ Migrations, seeders, and factories for easy database setup  
+- 🛠️ Clean and structured code, following best practices  
+
+The goal of Tasklee is not only to manage tasks efficiently, but also to serve as a learning project that demonstrates how to structure features, handle routes, validate data, and keep code organized in a modern Laravel application.
 
 ## Prerequisites
 
@@ -57,5 +66,7 @@ The application should now be running at `http://localhost:8000`.
 - Mark tasks as complete/incomplete
 - Paginated task list
 - Form validation
+- Flash messages
+- Checklists
 
 This project is intended for study purposes to practice Laravel functionality and CRUD operations.
