@@ -68,5 +68,3 @@ The application should now be running at `http://localhost:8000`.
 - Form validation
 - Flash messages
 - Checklists
-
-This project is intended for study purposes to practice Laravel functionality and CRUD operations.
